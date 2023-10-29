@@ -1,0 +1,37 @@
+{
+  "name": "whisper-js",
+  "version": "0.0.1",
+  "description": "A simple portable library for working with OpenAIs Whisper model.",
+  "main": "dist/whisper.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianmarmour/whisper-js.git"
+  },
+  "keywords": [
+    "OpenAI",
+    "Whisper",
+    "Transcript",
+    "Transcriber",
+    "Audio",
+    "Speech",
+    "Speech-to-Text"
+  ],
+  "author": "Ian Armour <ianmarmour@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ianmarmour/whisper-js/issues"
+  },
+  "homepage": "https://github.com/ianmarmour/whisper-js#readme",
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "onnxruntime-web": "^1.16.1"
+  }
+}
