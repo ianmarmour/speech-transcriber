@@ -32,7 +32,10 @@ class Whisper {
    * @param uri - The URL of PATH where the whisper model should be loaded from.
    * @returns - An initilized instance of the Whisper model for transcription.
    */
-  static async create(uri: string, sampleRate: number) {
+  static async create(
+    uri: string = "whisper_cpu_int8_0_model.onnx",
+    sampleRate: number
+  ) {
     const opt: ort.InferenceSession.SessionOptions = {
       executionProviders: ["wasm"],
       logSeverityLevel: 3,
