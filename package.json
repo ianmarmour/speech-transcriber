@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run clean && tsc && npm run copy-files",
     "clean": "rimraf dist/",
-    "copy-files": "copyfiles -u 1 model/*.onnx dist/",
+    "copy-files": "copyfiles -u 1 model/*.onnx dist/model/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,10 +32,14 @@
   "devDependencies": {
     "@types/node": "^20.8.9",
     "copyfiles": "^2.4.1",
+    "prettier": "^3.0.3",
     "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "onnxruntime-web": "^1.16.1"
+    "node-llama-cpp": "^2.8.0",
+    "onnxruntime-web": "^1.16.1",
+    "speech-recorder": "^2.1.0"
   }
 }

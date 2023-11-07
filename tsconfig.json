@@ -3,9 +3,10 @@
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Language and Environment */
-    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "target": "ES2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "lib": [
-      "ES2022"
+      "ES2022",
+      "DOM"
     ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
 
     /* Modules */
@@ -23,7 +24,7 @@
 
     /* Type Checking */
     "strict": true /* Enable all strict type-checking options. */,
-    "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
+    "noImplicitAny": false /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
 
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */

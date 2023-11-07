@@ -1,5 +1,6 @@
-import * as ort from "onnxruntime-web";
+import ort from "onnxruntime-web";
 import { ReadableStream, TransformStream, Transformer } from "node:stream/web";
+import * as fs from "fs";
 
 // This resolves a bug with WASM in nodejs.
 ort.env.wasm.numThreads = 1;
@@ -29,12 +30,13 @@ class Whisper {
   /**
    * A factory method used to generate instances of whisper sessions.
    *
+   * @param sampleRate - The sample rate for your input audio buffer.
    * @param uri - The URL of PATH where the whisper model should be loaded from.
    * @returns - An initilized instance of the Whisper model for transcription.
    */
   static async create(
-    uri: string = "whisper_cpu_int8_0_model.onnx",
-    sampleRate: number
+    sampleRate: number,
+    uri: string = "./model/whisper_cpu_int8_0_model.onnx"
   ) {
     const opt: ort.InferenceSession.SessionOptions = {
       executionProviders: ["wasm"],
@@ -42,7 +44,20 @@ class Whisper {
       logVerbosityLevel: 3,
     };
 
-    const session = await ort.InferenceSession.create(uri, opt);
+    // For compatability convert the URI into a properly
+    // formatted URL. This will work for NodeJS and Web.
+    const path = new URL(uri, import.meta.url);
+
+    let session: ort.InferenceSession;
+
+    if (typeof window === "undefined") {
+      // Only read in the model file in NodeJS.
+      const model = fs.readFileSync(path);
+
+      session = await ort.InferenceSession.create(model, opt);
+    } else {
+      session = await ort.InferenceSession.create(uri, opt);
+    }
 
     return new Whisper(session, sampleRate);
   }
