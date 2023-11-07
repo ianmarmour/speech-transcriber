@@ -1,8 +1,8 @@
 {
-  "name": "whisper-js",
-  "version": "0.0.1",
-  "description": "A simple library for working with OpenAIs Whisper model.",
-  "main": "dist/whisper.js",
+  "name": "speech-transcriber",
+  "version": "1.0.0",
+  "description": "A node.js library for transcribing audio to text using OpenAIs Whisper model",
+  "main": "dist/transcriber.js",
   "type": "module",
   "files": [
     "dist/"

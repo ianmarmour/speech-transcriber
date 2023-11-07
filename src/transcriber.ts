@@ -6,8 +6,8 @@ import * as fs from "fs";
 ort.env.wasm.numThreads = 1;
 ort.env.remoteModels = false;
 
-// wrapper around onnxruntime and model
-class Whisper {
+// Wrapper around onnx-runtime and whisper model.
+class Transcriber {
   private session: ort.InferenceSession;
   private minLength: Int32Array;
   private maxLength: Int32Array;
@@ -59,7 +59,7 @@ class Whisper {
       session = await ort.InferenceSession.create(uri, opt);
     }
 
-    return new Whisper(session, sampleRate);
+    return new Transcriber(session, sampleRate);
   }
 
   /**
@@ -143,4 +143,4 @@ class Whisper {
   }
 }
 
-export { Whisper };
+export { Transcriber };
